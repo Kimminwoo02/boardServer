@@ -1,14 +1,17 @@
 package com.example.boardserver.controller;
 
+import com.example.boardserver.aop.LoginCheck;
 import com.example.boardserver.dto.LoginResponse;
 import com.example.boardserver.dto.UserDTO;
 import com.example.boardserver.dto.UserInfoResponse;
-import com.example.boardserver.dto.UserLoginRequest;
+import com.example.boardserver.dto.request.UserDeleteId;
+import com.example.boardserver.dto.request.UserLoginRequest;
+import com.example.boardserver.dto.request.UserUpdatePasswordRequest;
 import com.example.boardserver.service.UserService;
+import com.example.boardserver.util.SessionUtil;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import org.apache.catalina.manager.util.SessionUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -71,9 +74,10 @@ public class UserController {
     }
 
     @PatchMapping("password")
-    public ResponseEntity<LoginResponse> updateUserPassword(@RequestBody UserUpdatePasswordRequest userUpdatePasswordRequest, HttpSession session) {
+    @LoginCheck(type = LoginCheck.UserType.USER)
+    public ResponseEntity<LoginResponse> updateUserPassword(String accountId, @RequestBody UserUpdatePasswordRequest userUpdatePasswordRequest, HttpSession session) {
         ResponseEntity<LoginResponse> responseEntity = null;
-        String id = SessionUtil.getLoginMemberId(session);
+        String id = accountId;
         String beforePassword = userUpdatePasswordRequest.getBeforePassword();
         String afterPassword = userUpdatePasswordRequest.getAfterPassword();
 
