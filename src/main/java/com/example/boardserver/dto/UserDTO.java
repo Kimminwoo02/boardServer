@@ -18,7 +18,7 @@ public class UserDTO {
         DEFAULT, ADMIN, DELETED
     }
     private int id;
-    private String userId;
+    private int userId;
     private String password;
     private String email;
     private String nickName;
@@ -28,4 +28,23 @@ public class UserDTO {
     private Status status;
     private Date updateTime;
 
+    public int getUserId() {
+        return userId;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
 }
