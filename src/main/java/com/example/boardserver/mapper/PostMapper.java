@@ -10,6 +10,6 @@ import java.util.List;
 public interface PostMapper {
     public int register(PostDTO postDTO);
     public List<PostDTO> selectMyPosts(int accountId);
-    public void updateCategory(PostDTO PostDTO);
-    public void deleteCategory(int postId);
+    public void updatePost(PostDTO PostDTO);
+    public void deletePost(int postId);
 }

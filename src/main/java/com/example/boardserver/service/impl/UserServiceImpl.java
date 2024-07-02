@@ -4,7 +4,6 @@ import com.example.boardserver.dto.UserDTO;
 import com.example.boardserver.exception.DuplicateIdException;
 import com.example.boardserver.mapper.UserProfileMapper;
 import com.example.boardserver.service.UserService;
-import com.example.boardserver.util.SHA256Util;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
