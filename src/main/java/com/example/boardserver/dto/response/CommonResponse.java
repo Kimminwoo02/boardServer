@@ -13,4 +13,8 @@ public class CommonResponse<T> {
     private String code;
     private String message;
     private T requestBody;
+
+    public CommonResponse(HttpStatus httpStatus, String success, String registerPostUpdate) {
+
+    }
 }
