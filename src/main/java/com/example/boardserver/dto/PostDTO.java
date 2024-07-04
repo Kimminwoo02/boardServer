@@ -3,6 +3,7 @@ package com.example.boardserver.dto;
 import lombok.*;
 
 import java.util.Date;
+import java.util.List;
 
 
 @Data
@@ -18,33 +19,7 @@ public class PostDTO {
     private int fileId;
     private Date updateTime;
     private Date createTime;
+    private List<TagDTO> tags;
 
 
-    public int getId() {
-        return id;
-    }
-
-    public String getContents() {
-        return contents;
-    }
-
-    public void setContents(String contents) {
-        this.contents = contents;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
 }

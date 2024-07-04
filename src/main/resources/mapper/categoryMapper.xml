@@ -13,11 +13,10 @@
         WHERE id = #{id}
     </update>
 
-    <delete>
-        DELETE FROM cateogry
+    <delete id ="deleteCategory">
+        DELETE FROM category
         WHERE id = #{id}
-
     </delete>
 
-    <select id="">
+
 </mapper>
