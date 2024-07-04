@@ -8,7 +8,6 @@ import com.example.boardserver.service.PostService;
 import com.example.boardserver.service.UserService;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -77,12 +76,12 @@ public class PostController {
                                                                          @RequestBody PostDeleteRequest postDeleteRequest){
         UserDTO userInfo = userService.getUserInfo(accountId);
         postService.deletePosts(userInfo.getUserId(),postId);
-        CommonResponse commonResponse = new CommonResponse<>(HttpStatus.OK,"SUCCESS","deletePosts",postDTO);
+        CommonResponse commonResponse = new CommonResponse<>(HttpStatus.OK,"SUCCESS","deletePosts",userInfo);
         return ResponseEntity.ok(commonResponse);
 
     }
 
-    
+
 
 
     // -- response 객체 Inner로 선언

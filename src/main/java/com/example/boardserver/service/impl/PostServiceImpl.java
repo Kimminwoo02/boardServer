@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 import java.util.Date;
 import java.util.List;
 @Service
-@Slf4j
+
 public class PostServiceImpl implements PostService {
 
     private static final Logger log = LoggerFactory.getLogger(PostServiceImpl.class);
@@ -60,7 +60,7 @@ public class PostServiceImpl implements PostService {
             postMapper.deletePost(postId);
         } else {
             log.error( "delete Error! {}  {}", userId, postId);
-            throw new RuntimeException("delete ERROR! Please Check the delete Method "+ postDTO );
+            throw new RuntimeException("delete ERROR! Please Check the delete Method "+ postId );
         }
     }
 }
