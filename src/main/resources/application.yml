@@ -5,3 +5,13 @@ spring:
     password: 1234
 mybatis:
   mapper-locations: classpath:com.example.boardserver.mapper/*.xml
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      password: test1234
+      repository:
+        enabled: false
+expire:
+  defaultTime: 3600
+
