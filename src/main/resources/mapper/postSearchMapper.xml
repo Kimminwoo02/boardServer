@@ -3,7 +3,16 @@
 
 <mapper namespace="com.example.boardserver.mapper.PostSearchMapper">
     <select id="selectPosts" resultType="com.example.boardserver.dto.request.PostSearchRequest">
-        SELECT
+        SELECT "id",
+                "name",
+                "isAdmin",
+                "contents",
+                "createTime",
+                "views",
+                "categoryId",
+                "userId",
+                "fileId",
+                "updateTime"
         FROM "post"
         WHERE 1=1
         <if test="name != null and name != ''" >
@@ -42,6 +51,26 @@
         SET name = #{name}
         WHERE id = #{id}
     </update>
+
+
+    <select id="getPostByTag" resultType="com.example.boardserver.dto.request.PostSearchRequest">
+        SELECT p."id",
+               p."name",
+               p."isAdmin",
+               p."contents",
+               p."createTime",
+               p."views",
+               p."categoryId",
+               p."userId",
+               p."fileId",
+               p."updateTime"
+        FROM post p JOIN posttag pt ON p.id = pt.postId
+                    JOIN tag t on pt.tagId = t.id
+        WHERE t.name = #{tagName}
+
+    </select>
+
+
 
 
 

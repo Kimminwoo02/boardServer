@@ -32,4 +32,21 @@ public class PostSearchServiceImpl implements PostSearchService {
         }
         return postDTOList;
     }
+
+    @Override
+    public List<PostDTO> getPostByTag(String tagName) {
+        List<PostDTO> postByTag = null;
+        try{
+            postByTag = mapper.getPostByTag(tagName);
+
+        }
+        catch (RuntimeException e){
+            log.error("Failed SelectPosts {}", e.getMessage());
+        }
+
+        return postByTag;
+
+    }
+
+
 }
