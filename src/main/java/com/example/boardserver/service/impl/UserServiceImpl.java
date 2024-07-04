@@ -21,7 +21,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void register(UserDTO userProfile) {
-        boolean duplIdResult = isDuplicated(userProfile.getUserId());
+        boolean duplIdResult = isDuplicated(String.valueOf(userProfile.getUserId()));
         if( duplIdResult){
             throw new DuplicateIdException("Duplicated Id Error");
         }

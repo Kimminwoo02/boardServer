@@ -11,7 +11,7 @@ import java.util.Date;
 @ToString
 public class UserDTO {
     public static boolean hasNullDataBeforeRegister(UserDTO userDTO) {
-        return userDTO.getUserId() == null || userDTO.getPassword() == null || userDTO.getNickName() == null;
+        return  userDTO.getPassword() == null || userDTO.getNickName() == null;
     }
 
     public enum Status{
@@ -28,23 +28,4 @@ public class UserDTO {
     private Status status;
     private Date updateTime;
 
-    public int getUserId() {
-        return userId;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
-
-    public Status getStatus() {
-        return status;
-    }
 }
