@@ -13,13 +13,19 @@ import org.springframework.stereotype.Service;
 @Slf4j
 public class CategoryServiceImpl implements CategoryService {
 
-    private static final Logger log = LoggerFactory.getLogger(CategoryServiceImpl.class);
+
     @Autowired
     private CategoryMapper categoryMapper;
     @Override
     public void register(String accountId, CategoryDTO categoryDTO) {
         if(accountId != null){
-            categoryMapper.register(categoryDTO);
+            try{
+                categoryMapper.register(categoryDTO);
+            }catch (RuntimeException e){
+                log.error("register ERROR! {}", categoryDTO);
+                throw new RuntimeException("register ERROR! Check the Category"+categoryDTO);
+            }
+
         } else {
             log.error("register ERROR! {}", categoryDTO);
             throw new RuntimeException("register ERROR! Check the Category"+categoryDTO);
@@ -30,7 +36,12 @@ public class CategoryServiceImpl implements CategoryService {
     @Override
     public void update(CategoryDTO categoryDTO) {
         if(categoryDTO != null){
-            categoryMapper.updateCategory(categoryDTO);
+            try{
+                categoryMapper.updateCategory(categoryDTO);
+            }catch (RuntimeException e){
+                log.error("update ERROR! {}", categoryDTO);
+                throw new RuntimeException("update ERROR! Check the Category"+categoryDTO);
+            }
         } else {
             log.error( "update ERROR ! {} ", categoryDTO);
             throw new RuntimeException("update ERROR! Check the Category"+categoryDTO);
@@ -40,7 +51,13 @@ public class CategoryServiceImpl implements CategoryService {
     @Override
     public void delete(int categoryId) {
         if(categoryId != 0){
-            categoryMapper.deleteCategory(categoryId);
+            try{
+                categoryMapper.deleteCategory(categoryId);
+            }catch (RuntimeException e){
+                log.error("delete ERROR! {}", categoryId);
+                throw new RuntimeException("delete ERROR! Check the Category "+categoryId);
+            }
+
         } else {
             log.error( "delete ERROR ! {} ", categoryId);
             throw new RuntimeException("delete ERROR! Check the Category"+categoryId);

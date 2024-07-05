@@ -2,11 +2,13 @@ package com.example.boardserver.service.impl;
 
 import com.example.boardserver.dto.PostDTO;
 import com.example.boardserver.dto.request.PostSearchRequest;
+import com.example.boardserver.exception.BoardServerException;
 import com.example.boardserver.mapper.PostSearchMapper;
 import com.example.boardserver.service.PostSearchService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.http.HttpStatus;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
@@ -30,7 +32,8 @@ public class PostSearchServiceImpl implements PostSearchService {
 
         }
         catch (RuntimeException e){
-            log.error("Failed SelectPosts {}", e.getMessage());
+            log.error("getProducts 실패");
+            throw new BoardServerException(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage());
         }
         return postDTOList;
     }
