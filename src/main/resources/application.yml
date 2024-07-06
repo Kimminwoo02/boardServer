@@ -15,3 +15,17 @@ mybatis:
 expire:
   defaultTime: 3600
 
+sns:
+  topic:
+    arn: arn:aws:sns:ap-northeast-2:535938367146:boardserver
+aws:
+  accessKey : AKIAXZSDGPFN2GJMD
+  region : ap-northest-2
+cloud:
+  aws:
+    region:
+      static: ap-northeast-2
+    stack:
+      auto: false
+
+
